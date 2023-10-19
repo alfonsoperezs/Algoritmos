@@ -1,2 +1,3 @@
 # Algoritmos
-Prácticas de la asignatura de Algoritmos
+Notas de las prácticas:
+  - Práctica 1 : 9,5
