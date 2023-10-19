@@ -1,0 +1,94 @@
+					
+
+				ALGORITMOS PRÁCTICA 1: INFORME
+
+    - Alfonso Pérez Sánchez (a.perezs@udc.es)
+    - Brais Calvo Pensado (brais.calvo.pensado@udc.es)
+    - Lucía Lagares Álvarez (lucia.lagares1@udc.es)
+ 
+
+						CONTEXTO
+
+	En esta práctica, estaremos analizando los tiempos de ejecución de dos algoritmos diseñados para calcular
+	la suma de la subsecuencia máxima de un conjunto de números enteros. Esta subsecuencia máxima es definida
+	como la suma más grande obtenible entre todas las posibles subsecuencias de números en el conjunto, siendo 0
+	en caso de que todos los números sean negativos.
+
+
+						MÁQUINA DONDE SE HAN REALIZADO LAS MEDICIONES
+
+	Especificaciones:
+
+	  - Modelo: Lenovo Thinkpad T430
+	  - CPU: Intel CORE i5 vPRO
+	  - Memoria RAM: 8Gb
+	  - Sistema Operativo: Linux Kubuntu 23.04 x86_64
+
+						MEDICIÓN DE LOS TIEMPOS DE EJECUCIÓN
+    Notas:
+
+      - Unidades de medida: Los tiempos se expresarán en microsegundos.
+      - Hemos obtenido los tiempos para cada algoritmo midiendolo para vectores de números de longitud n,
+        donde en cada iteracción, el aumento del tamaño del vector seguirá una progresión geométrica de
+        razón 2 (500, 1000, 2000, ...).
+      - Hemos establecido un umbral de confianza t > 500. Los casos en los que el tiempo de ejecución no
+        supera dicho umbral, han sido marcados con un (*). En estas situaciones especiales, el tiempo mostrado
+        será la media de ejecutar el algoritmo K veces.
+      - Hemos asignado K = 100.
+      - En todas las tablas de resultados, la primera columna indicará la longitud del vector (n). La segunda
+        columna mostrará el tiempo de ejecución (t(n)) del algoritmo. A continuación, se presentarán tres columnas
+        adicionales para proporcionar una estimación del rendimiento del algoritmo: una cota inferior ligeramente
+        subestimada, una cota ajustada y una cota superior ligeramente sobrestimada.
+
+    En primer lugar, analizaremos el algoritmo sumaSubMax1. A continuación se mostrará una tabla con los resultados
+    obtenidos:
+
+                            n                          t(n)                    t(n)/n^1.8                      t(n)/n^2                    t(n)/n^2.2
+    (*)                    500                       373.430                      0.005177                      0.001494                      0.000431
+                          1000                      1465.000                      0.005832                      0.001465                      0.000368
+                          2000                      5806.000                      0.006638                      0.001452                      0.000317
+                          4000                     23912.000                      0.007851                      0.001494                      0.000285
+                          8000                     93695.000                      0.008834                      0.001464                      0.000243
+                         16000                    374938.000                      0.010152                      0.001465                      0.000211
+                         32000                   1485239.000                      0.011549                      0.001450                      0.000182
+
+      - n^1.8 es una cota ligeramente subestimada.
+      - n^2 es la cota ajustada.
+      - n^2.2 es la cota ligeramente sobrestimada.
+      - La constante de proporcionalidad (C) es 0.0014.
+
+    CONCLUSIÓN: Podemos observar que el tiempo (t(n)) aumenta notablemente a medida que aumentamos el tamaño de la entrada.
+    Tras estudiar t(n) con diversas cotas, hemos concluido que la complejidad del algoritmo es análoga a la cota O(n²). A
+    medida que el tiempo aumenta, la relación t(n)/n^2 se mantiene prácticamente constante.
+
+
+    Por último, analizaremos el algoritmo sumaSubMax2. A continuación se mostrará una tabla con los resultados
+    obtenidos:
+
+                                 n                          t(n)                    t(n)/n^0.8                      t(n)/n^1                    t(n)/n^1.2
+    (*)                        500                         1.780                      0.012338                      0.003560                      0.001027
+    (*)                       1000                         3.910                      0.015566                      0.003910                      0.000982
+    (*)                       2000                         6.600                      0.015091                      0.003300                      0.000722
+    (*)                       4000                         5.350                      0.007026                      0.001337                      0.000255
+    (*)                       8000                        29.740                      0.022432                      0.003717                      0.000616
+    (*)                      16000                        53.950                      0.023372                      0.003372                      0.000486
+    (*)                      32000                        99.170                      0.024675                      0.003099                      0.000389
+
+      - n^0.8 es una cota ligeramente subestimada.
+      - n^1 es la cota ajustada.
+      - n^1.2 es la cota ligeramente sobrestimada.
+      - La constante de proporcionalidad (C) es 0.003.
+
+    CONCLUSIÓN: Al igual que con el anterior algoritmo, podemos observar que el tiempo (t(n)) aumenta notablemente a medida
+    que aumentamos el tamaño de la entrada.Tras estudiar t(n) con diversas cotas, hemos concluido que la complejidad del
+    algoritmo es análoga a la cota O(n). A medida que el tiempo aumenta, la relación t(n)/n^2 se mantiene prácticamente constante.
+    Detallar que para n = 4000, se detecta una anomalía en los resultados, ya que el tiempo de ejecución es menor que para
+    n = 2000 y a la vez menor que n = 4000.
+
+
+						CONCLUSIÓN GENERAL
+
+    Podemos concluir que el algoritmo sumaSubMax1 tiene una complejidad temporal cuadrática, mientras que el algoritmo
+    sumaSubMax2 muestra una complejidad lineal. Para obtener dicho resultado del experimento, se ha comparado el tiempo para distintas entradas con las cotas. Además, se ha considerado un umbral de confianza y un tratamiento especial para las
+    ejecuciones que no la superan, y así lograr una precisión aceptable en el estudio.
+
