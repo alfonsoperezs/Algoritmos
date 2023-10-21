@@ -1,0 +1,135 @@
+Lucia Lagares Alvarez [lucia.lagares1@udc.es]
+Brais Calvo Pensado   [brais.calvo.pensado@udc.es]
+Alfonso Perez Sanchez [a.perezs@udc.es]
+*******************************************************************************************
+INTRODUCCION:
+Esta práctica consiste en calcular empiricamente la complejidad de dos algoritmos de ordenación, uno de ellos ordena por seleccion y, el otro, a traves de shell.
+Para esto, mediremos los tiempos de los dos algoritmos con un vestor inicializado de forma aleatoria, otro de forma descendente y la ultima de forma ascendente.
+*******************************************************************************************
+MAQUINA DONDE SE HAN REALIZADO LAS MEDICIONES:
+- Modelo: Lenovo Thinkpad T430.
+- CPU: Intel CORE i5 vPro.
+- Memoria RAM: 8Gb.
+- Sistema Operativo: Linux Kubuntu 23.04 x86_64
+*******************************************************************************************
+NOTAS:
+- Los tiempos se expresan en microsegundos.
+- Hemos establecido un umbral de confianza donde t>500. Los casos en el que dicho umbral no sea superado, estan marcados con (*), en estas situaciones hemos mostrado el tiempo del algoritmo ejecutado K veces. Donde K=100.
+- En todas las tablas mostradas a continuacion, la primera columna indicara la longitud n del vector, la segunda mostrara el tiempo de ejecucion t(n), y a continuacion de estas, se mostraran otras tres columnas que indicaran: una cota inferior ligeramente subestimada, la cota ajustada y una cota superior ligeramente sobreestimada.
+*******************************************************************************************
+Ordenacion por insercion con inicializacion ascendente
+           n           t(n)       t(n)/n^0.8       t(n)/n        t(n)/n^1.2
+(*)       500          2.310       0.016012       0.004620       0.001333
+(*)      1000          4.340       0.017278       0.004340       0.001090
+(*)      2000          8.940       0.020442       0.004470       0.000977
+(*)      4000         15.860       0.020828       0.003965       0.000755
+(*)      8000         32.340       0.024393       0.004043       0.000670
+(*)     16000         58.890       0.025512       0.003681       0.000531
+(*)     32000        157.020       0.039069       0.004907       0.000616
+(*)     64000        269.150       0.038464       0.004205       0.000460
+
+- Cota subestimada: n^0.8
+- Cota ajustada: n
+- Cota sobreestimada: n^1.2
+Observaciones:
+La cota subestimada se hace mas grande a medida que aumentamos la n, la sobreestimada, al contrario que la anterior, se hace cada vez mas pequeña. En el caso de la cota ajustada, tiende siempre a un valor constante, de media 0.0042
+COMPLEJIDAD: O(n)
+
+Ordenacion por insercion con inicializacion descendente
+           n           t(n)       t(n)/n^1.8       t(n)/n^2      t(n)/n^2.2
+(*)       500        368.760       0.005112       0.001475       0.000426
+         1000       1438.000       0.005725       0.001438       0.000361
+         2000       5592.000       0.006393       0.001398       0.000306
+         4000      24073.000       0.007904       0.001505       0.000286
+         8000      90909.000       0.008571       0.001420       0.000235
+        16000     359464.000       0.009733       0.001404       0.000203
+        32000    1430717.000       0.011125       0.001397       0.000175
+        64000    5705935.000       0.012741       0.001393       0.000152
+
+- Cota subestimada: n^1.8
+- Cota ajustada: n^2
+- Cota sobreestimada: n^2.2
+Al ver esta tabla podemos observar que los valores de la cota ajustada tienden a una constante de media 0.001428 ; que los de la cota sobreestimada tienden a 0  y los de la cota subestimada se hacen cada vez mas grandes, es decir, tienden a infinito.
+COMPLEJIDAD: O(n^2)
+
+Ordenacion por insercion con inicializacion aleatoria
+           n           t(n)       t(n)/n^1.8       t(n)/n^2      t(n)/n^2.2
+(*)       500        188.140       0.002608       0.000753       0.000217
+         1000        757.000       0.003014       0.000757       0.000190
+         2000       2912.000       0.003329       0.000728       0.000159
+         4000      11552.000       0.003793       0.000722       0.000137
+         8000      46890.000       0.004421       0.000733       0.000121
+        16000     179025.000       0.004847       0.000699       0.000101
+        32000     715247.000       0.005561       0.000698       0.000088
+        64000    2857564.000       0.006381       0.000698       0.000076
+
+- Cota subestimada: n^1.8
+- Cota ajustada: n^2
+- Cota sobreestimada: n^2.2
+Observaciones:
+La cota subestimada se hace mas grande a medida que aumentamos la n, la sobreestimada, al contrario que la anterior, se hace cada vez mas pequeña. En el caso de la cota ajustada, tiende siempre a un valor constante de media 0.0007235.
+COMPLEJIDAD: O(n^2)
+
+- En conclusion, la complejidad computacional en el mejor caso del algoritmo de ordenacion por insercion es O(n) y para el caso medio y peor es O(n^2).
+
+*******************************************************************************************
+
+Ordenacion shell con inicializacion ascendente
+           n           t(n)          t(n)/n     t(n)/nlog(n)      t(n)/n^1.5
+(*)       500         17.650       0.035300       0.005680       0.001579
+(*)      1000         39.860       0.039860       0.005770       0.001260
+(*)      2000         89.600       0.044800       0.005894       0.001002
+(*)      4000        219.880       0.054970       0.006628       0.000869
+(*)      8000        456.630       0.057079       0.006351       0.000638
+        16000        990.000       0.061875       0.006392       0.000489
+        32000       2075.000       0.064844       0.006251       0.000362
+        64000       4448.000       0.069500       0.006280       0.000275
+
+- Cota subestimada: n
+- Cota ajustada: n(log(n))
+- Cota sobreestimada: n^1.5
+Observaciones:
+La cota subestimada se hace mas grande a medida que aumentamos la n, la sobreestimada, al contrario que la anterior, se hace cada vez mas pequeña. En el caso de la cota ajustada, tiende siempre a un valor constante de media 0.006155.
+COMPLEJIDAD: O(n*(log(n))
+
+Ordenacion shell con inicializacion descendente
+           n           t(n)     t(n)/nlog(n)   t(n)/nlog(n)^2     t(n)/n^3
+(*)       500         25.720       0.008277       0.001332       0.000214
+(*)      1000         57.790       0.008366       0.001211       0.000175
+(*)      2000        144.750       0.009522       0.001253       0.000165
+(*)      4000        297.560       0.008969       0.001081       0.000130
+         8000        653.000       0.009082       0.001011       0.000112
+        16000       1368.000       0.008832       0.000912       0.000094
+        32000       2950.000       0.008887       0.000857       0.000083
+        64000       6333.000       0.008942       0.000808       0.000073
+
+- Cota subestimada: n*(log(n))
+- Cota ajustada: n*(log(n^2)))
+- Cota sobreestimada: n^3
+Observaciones:
+La cota subestimada se hace mas grande a medida que aumentamos la n, la sobreestimada, al contrario que la anterior, se hace cada vez mas pequeña. En el caso de la cota ajustada, tiende siempre a un valor constante de media 0.001058.
+COMPLEJIDAD: O(n*(log(n^2))))
+
+Ordenacion shell con inicializacion aleatoria
+           n           t(n)     t(n)/nlog(n)   t(n)/nlog(n)^2     t(n)/n^3
+(*)       500         57.660       0.018556       0.002986       0.000480
+(*)      1000        144.480       0.020916       0.003028       0.000438
+(*)      2000        313.480       0.020621       0.002713       0.000357
+         4000        699.000       0.021069       0.002540       0.000306
+         8000       1565.000       0.021767       0.002422       0.000269
+        16000       3658.000       0.023617       0.002440       0.000252
+        32000       8049.000       0.024248       0.002337       0.000225
+        64000      20202.000       0.028523       0.002577       0.000233
+
+- Cota subestimada: n*(log(n))
+- Cota ajustada: n*(log(n^2)))
+- Cota sobreestimada: n^3
+Observaciones:
+La cota subestimada se hace mas grande a medida que aumentamos la n, la sobreestimada, al contrario que la anterior, se hace cada vez mas pequeña. En el caso de la cota ajustada, tiende siempre a un valor constante de media 0.002630.
+COMPLEJIDAD: O(n*(log(n^2))))
+
+-En conclusion, para el mejor caso la complejidad del algoritmo de ordenacion por shell es O(n*(log(n))) y para el caso medio y el peor es O(n*(log(n^2)))
+*******************************************************************************************
+CONCLUSION:
+Despues de estudiar la complejidad de ambos algoritmos, ordenacion por insercion y por shell, hemos comprobado que el algoritmo de ordenacion por shell es muchisimo mas eficiente que el de ordenacion por insercion. El algoritmo de ordenacion por shell es mas rapido y tiene menor complejidad que el otro, definitivamente es mejor.
+
