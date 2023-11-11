@@ -1,0 +1,145 @@
+					
+
+				ALGORITMOS PRÁCTICA 3: INFORME
+
+    - Alfonso Pérez Sánchez (a.perezs@udc.es)
+    - Brais Calvo Pensado (brais.calvo.pensado@udc.es)
+    - Lucía Lagares Álvarez (lucia.lagares1@udc.es)
+ 
+
+						CONTEXTO
+
+	En esta práctica, estaremos calculando empíricamente la complejidad del algoritmo de ordenación por 
+        monticulos, a través de diferentes vectores inicializados de forma distinta. En este caso, los vectores
+        utilizados han sido inicializados de 3 maneras: de manera aleatoria, de manera descendente y, el último, 
+        de manera ascendente. 
+	A su vez, verificamos empiricamente que la complejidad del algoritmo crear monticulo es O(n).
+
+						MÁQUINA DONDE SE HAN REALIZADO LAS MEDICIONES
+
+	Especificaciones:
+
+	  - Modelo: Lenovo Thinkpad T430
+	  - CPU: Intel CORE i5 vPRO
+	  - Memoria RAM: 8Gb
+	  - Sistema Operativo: Linux Kubuntu 23.04 x86_64
+
+						MEDICIÓN DE LOS TIEMPOS DE EJECUCIÓN
+    Notas:
+
+      - Unidades de medida: Los tiempos se expresarán en microsegundos.
+      - Hemos obtenido los tiempos para cada algoritmo midiendolo para vectores de números de longitud n,
+        donde en cada iteracción, el aumento del tamaño del vector seguirá una progresión geométrica de
+        razón 2 (500, 1000, 2000, ...).
+      - Hemos establecido un umbral de confianza t > 500. Los casos en los que el tiempo de ejecución no
+        supera dicho umbral, han sido marcados con un (*). En estas situaciones especiales, el tiempo mostrado
+        será la media de ejecutar el algoritmo K veces.
+      - Hemos asignado K = 100.
+      - En todas las tablas de resultados, la primera columna indicará la longitud del vector (n). La segunda
+        columna mostrará el tiempo de ejecución (t(n)) del algoritmo. A continuación, se presentarán tres columnas
+        adicionales para proporcionar una estimación del rendimiento del algoritmo: una cota inferior ligeramente
+        subestimada, una cota ajustada y una cota superior ligeramente sobrestimada.
+
+    En primer lugar, a continuación, se mostrará una tabla con los resultados obtenidos en la operación de crear
+    monticulo:
+    
+    Operacion de crear monticulos
+    
+               n           t(n)       t(n)/n^0.8       t(n)/n        t(n)/n^1.2
+
+    (*)       500         10.250       0.071047       0.020500       0.005915
+    (*)      1000         20.470       0.081493       0.020470       0.005142
+    (*)      2000         39.070       0.089335       0.019535       0.004272
+    (*)      4000         90.160       0.118404       0.022540       0.004291
+    (*)      8000        167.210       0.126122       0.020901       0.003464
+    (*)     16000        320.340       0.138776       0.020021       0.002888
+            32000        647.000       0.160985       0.020219       0.002539
+            64000       1229.000       0.175634       0.019203       0.002100
+           128000       2449.000       0.201011       0.019133       0.001821
+           256000       4918.000       0.231844       0.019211       0.001592
+     
+      - n^0.8 es una cota ligeramente subestimada.
+      - n es la cota ajustada.
+      - n^1.2 es la cota ligeramente sobrestimada.
+      - La constante de proporcionalidad (C) es 0.0014.
+
+    CONCLUSIÓN: Podemos observar que el tiempo (t(n)) aumenta notablemente a medida que aumentamos el tamaño de la entrada.
+    Tras estudiar t(n) con diversas cotas, hemos concluido que la complejidad del algoritmo es análoga a la cota O(n). A
+    medida que el tiempo aumenta, la relación t(n)/n se mantiene prácticamente constante.
+
+
+    A continuación, se mostrarán los tiempos de la ordenación por monticulos. Veremos como se comporta este algoritmo a medida
+    que recibe vectores inicializados de forma aleatoria, ascendente y descendente.
+
+    Ordenacion por monticulos con inicializacion ascendente
+
+               n           t(n)         t(n)/n      t(n)/n*logn     t(n)/n^1.2
+    (*)      500          45.270       0.090540      0.010098      # 0.026124 
+    (*)      1000        107.410       0.107410      0.010778      # 0.026980
+    (*)      2000        252.570       0.126285      0.011516      # 0.027615
+             4000        536.000       0.134000      0.011199        0.025509
+             8000       1106.000       0.138250      0.010663        0.022911 
+            16000       2344.000       0.146500      0.010490        0.021136 
+            32000       4944.000       0.154500      0.010324        0.019404 
+            64000      10216.000       0.159625      0.009998        0.017453
+           128000      23072.000       0.180250      0.010624        0.017157
+           256000      46214.000       0.180523      0.010048        0.014958
+
+      - n es una cota ligeramente subestimada.
+      - nlogn es la cota ajustada.
+      - n^1.2 es la cota ligeramente sobrestimada.
+      - La constante de proporcionalidad (C) es 0.0107.
+      - Hemos marcado con un # unos tiempos que considerabamos anomalos, ya que en la cota sobrestimada
+      con n=500,n=100 y n=200 sus tiempos no decrecen si no que crecen.
+
+    Ordenacion por monticulos con inicializacion descendente
+               n           t(n)         t(n)/n      t(n)/n*logn     t(n)/n^1.2
+    (*)       500         51.340       0.102680       0.011452       0.029627
+    (*)      1000        116.880       0.116880       0.011728       0.029359
+    (*)      2000        259.710       0.129855       0.011842       0.028396
+             4000        549.000       0.137250       0.011470       0.026128
+             8000       1151.000       0.143875       0.011097       0.023843
+            16000       2402.000       0.150125       0.010749       0.021659
+            32000       4981.000       0.155656       0.010401       0.019550
+            64000      10381.000       0.162203       0.010159       0.017735
+           128000      23400.000       0.182812       0.010775       0.017401
+           256000      46746.000       0.182602       0.010164       0.015131
+
+      - n es una cota ligeramente subestimada.
+      - n*log n es la cota ajustada.
+      - n^1.2 es la cota ligeramente sobrestimada.
+      - La constante de proporcionalidad (C) es 0.011.
+    
+
+    Ordenacion por monticulos con inicializacion aleatoria
+               n           t(n)         t(n)/n      t(n)/n*logn     t(n)/n^1.2
+    (*)       500         61.630       0.123260       0.013748       0.035565
+    (*)      1000        139.280       0.139280       0.013976       0.034986
+    (*)      2000        316.720       0.158360       0.014441       0.034629
+             4000        647.000       0.161750       0.013518       0.030792
+             8000       1359.000       0.169875       0.013102       0.028152
+            16000       2949.000       0.184312       0.013197       0.026591
+            32000       6280.000       0.196250       0.013113       0.024648
+            64000      13807.000       0.215734       0.013512       0.023588
+           128000      30235.000       0.236211       0.013923       0.022483
+           256000      68360.000       0.267031       0.014863       0.022127
+
+      - n es una cota ligeramente subestimada.
+      - n*log n es la cota ajustada.
+      - n^1.2 es la cota ligeramente sobrestimada.
+      - La constante de proporcionalidad (C) es 0.012.  
+
+                             
+    CONCLUSIÓN: Al igual que con el anterior algoritmo, podemos observar que el tiempo (t(n)) aumenta notablemente a medida
+    que aumentamos el tamaño de la entrada.Tras estudiar t(n) con diversas cotas, hemos concluido que la complejidad del
+    algoritmo es análoga a la cota O(n*log n). A medida que el tiempo aumenta, la relación t(n)/n*log n se mantiene prácticamente           
+    constante.
+
+  
+
+						CONCLUSIÓN GENERAL
+
+    Podemos observar que el algoritmo de ordenación por monticulos es mucho más regular, es decir, depende mucho menos de la forma
+    del vector de entrada. Esto lo observamos ya que, por ejemplo, tanto la ordenación por inserción como la ordenación
+    a través de shell su complejidad y sus tiempos dependen de la forma en la que este ordenado el vector que reciben.
+    
