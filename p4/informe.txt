@@ -1,0 +1,67 @@
+					
+
+				INFORME PRÁCTICA 4: 
+
+    - Alfonso Pérez Sánchez (a.perezs@udc.es)
+    - Brais Calvo Pensado (brais.calvo.pensado@udc.es)
+    - Lucía Lagares Álvarez (lucia.lagares1@udc.es)
+ 
+
+						CONTEXTO
+
+	- El algoritmo de Dijkstra, es un algoritmo para la determinación del camino mínimo de un grafo, es decir, el camino más corto posible de un vertice a otro de un grafo.
+
+    - En esta prática analizaremos empíricamente la complejidad de dicho algoritmo, a través de grafos completos no dirigidos.
+
+						MÁQUINA DONDE SE HAN REALIZADO LAS MEDICIONES
+
+	Especificaciones:
+
+	  - Modelo: Lenovo Thinkpad T430
+	  - CPU: Intel CORE i5 vPRO
+	  - Memoria RAM: 8Gb
+	  - Sistema Operativo: Linux Kubuntu 23.04 x86_64
+
+						MEDICIÓN DE LOS TIEMPOS DE EJECUCIÓN
+    Notas:
+
+      - La unidad de medida son los microsegundos.
+      - Hemos obtenido los tiempos para el algoritmo midiendolo para vectores de números de longitud n,
+        donde en cada iteracción, el aumento del tamaño del vector seguirá una progresión geométrica de
+        razón 2 (15, 30, 60, ...).
+      - Hemos establecido un umbral de confianza t > 500. Los casos en los que el tiempo de ejecución no
+        supera dicho umbral, han sido marcados con un (*) en sus respectivas tablas. En estas situaciones 
+        especiales, el tiempo mostrado será la media de ejecutar el algoritmo K veces, donde K = 100.
+      - En todas las tablas de resultados, la primera columna indicará la longitud del vector (n). La segunda
+        columna mostrará el tiempo de ejecución (t(n)) del algoritmo. A continuación, se presentarán tres columnas
+        adicionales para proporcionar una estimación del rendimiento del algoritmo: una cota inferior ligeramente
+        subestimada, una cota ajustada y una cota superior ligeramente sobrestimada.
+
+       - A continuación, mostraremos las mediciones antes mencionadas para el algoritmo de Dijkstra:
+   
+       Calculo de caminos minimos con el algoritmo de Dijkstra 
+
+           n           t(n)         t(n)/n^2.5      t(n)/n^2.9     t(n)/n^3.5
+       (*) 15         47.110         0.054061       0.018300       0.003604        
+       (*) 30        352.620         0.071533       0.018351       0.002384 
+           60       2333.000         0.083664       0.016266       0.001394
+          120      17722.000         0.112347       0.016553       0.000936 
+          240     126406.000         0.141658       0.015818       0.000590 
+          480    1047221.000         0.207460       0.017557       0.000432 
+          960    8957784.000         0.313706       0.020119       0.000327
+      
+      - Cota subestimada: es n^2.5
+      - Cota ajustada: es n^2.9, con constante de media= 0.01521
+      - Cota sobreestimada: es n^3.5
+
+                             
+    CONCLUSIÓN: podemos observar que el tiempo (t(n)) aumenta notablemente a medida que aumentamos el tamaño de la entrada.
+    Tras estudiar t(n) con diversas cotas, hemos concluido que la complejidad del algoritmo es análoga a la cota O(n^2.9). 
+  
+
+						CONCLUSIÓN GENERAL
+
+   - Tras estudiar la complejidad empíricamente del algoritmo de Dijkstra y comparar la cota teórica con la cota que hemos
+   sacado del experimento, se observa una clara variación. Mientras la cota teórica es cuadrática (O(n^2)), la de nuestro
+   análisis se acerca a una complejidad casi cúbica, en concreto, O(n^2,9).
+    
